@@ -1,8 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // --- PASSO 1: DEFINIR A URL DO SEU BACKEND ---
-  // Depois de hospedar seu servidor no Render, você receberá uma URL.
-  // Cole essa URL aqui. Exemplo: 'https://hubies-backend.onrender.com'
-  const backendUrl = "https://seu-backend-aqui.onrender.com"; // <-- MUITO IMPORTANTE: SUBSTITUA ESTA URL!
+  const backendUrl = "https://hubies.onrender.com";
 
   const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
   const currentPage = window.location.pathname.split("/").pop() || "login.html";
