@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro de Aluno - Hubies</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/login.css" />
+    <link rel="icon" href="/imagens/logo.png" type="image/png" />
+  </head>
+
+  <body class="pagina-login">
+    <div class="container-login" style="height: auto; padding: 50px 20px">
+      <div class="caixa-login">
+        <form
+          id="form-cadastro-aluno"
+          name="form-cadastro-aluno"
+          class="formulario-login visivel"
+        >
+          <h1>Crie sua Conta de Aluno</h1>
+          <p class="texto-secundario">
+            Junte-se à maior rede de portfólios universitários.
+          </p>
+
+          <div class="campo-form">
+            <label for="nome">Nome Completo</label>
+            <input type="text" id="nome" name="nome" required />
+          </div>
+
+          <div class="campo-form">
+            <label for="email">Email Institucional</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="seu.nome@universidade.edu.br"
+              required
+            />
+          </div>
+
+          <div class="campo-form">
+            <label for="fotoPerfil">Foto de Perfil (opcional)</label>
+            <input
+              type="file"
+              id="fotoPerfil"
+              name="fotoPerfil"
+              accept="image/*"
+            />
+          </div>
+
+          <div class="campo-form">
+            <label for="curso">Seu Curso</label>
+            <input
+              type="text"
+              id="curso"
+              name="curso"
+              placeholder="Ex: Engenharia de Software"
+              required
+            />
+          </div>
+
+          <!-- Campo UF -->
+          <select id="uf" name="uf"></select>
+
+          <!-- Campo Cidades -->
+          <select id="cidade" name="cidade">
+            <option>Selecione a cidade...</option>
+          </select>
+
+          <script>
+            async function carregarUFs() {
+              const res = await fetch("/api/ufs");
+              const dados = await res.json();
+
+              if (!dados.sucesso) return;
+              document.getElementById("uf").innerHTML = dados.ufs
+                .map(
+                  (uf) =>
+                    `<option value="${uf.sigla}">${uf.nome} (${uf.sigla})</option>`
+                )
+                .join("");
+            }
+
+            async function carregarCidades() {
+              const uf = document.getElementById("uf").value;
+              const res = await fetch(`/api/cidades?uf=${uf}`);
+              const dados = await res.json();
+
+              if (!dados.sucesso) return;
+              document.getElementById("cidade").innerHTML = dados.cidades
+                .map((c) => `<option value="${c.nome}">${c.nome}</option>`)
+                .join("");
+            }
+
+            document
+              .getElementById("uf")
+              .addEventListener("change", carregarCidades);
+            carregarUFs();
+          </script>
+
+          <div class="campo-form">
+            <label for="universidade" class="sua-universidade"
+              >Sua Universidade</label
+            >
+            <input
+              type="text"
+              id="universidade"
+              name="universidade"
+              placeholder="Ex: Universidade de São Paulo"
+              required
+            />
+          </div>
+
+          <div class="campo-form">
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" name="senha" required />
+          </div>
+
+          <div class="campo-form">
+            <label for="cadastro-senha-confirma">Confirme sua Senha</label>
+            <input
+              type="password"
+              id="cadastro-senha-confirma"
+              name="senha_confirma"
+              required
+            />
+          </div>
+
+          <button type="submit" class="botao-login">Cadastrar</button>
+          <a href="login.html" class="link-cadastro"
+            >Já tem uma conta? Faça o login</a
+          >
+        </form>
+      </div>
+    </div>
+    <script src="js/scripts.js"></script>
+  </body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perfil - Hubies</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/feed.css" />
+    <link rel="icon" href="/imagens/logo.png" type="image/png" />
+  </head>
+  <body>
+    <header class="cabecalho-principal">
+      <div class="container">
+        <a href="feed.html" class="logo"
+          ><img src="/imagens/Letreiro.png" alt="Logo Hubies"
+        /></a>
+        <div class="caixa-busca-container">
+          <div class="caixa-busca">
+            <i class="fas fa-search"></i>
+            <input
+              type="search"
+              id="barra-pesquisa-input"
+              placeholder="Buscar alunos por nome..."
+              autocomplete="off"
+            />
+          </div>
+          <div class="caixa-resultados-pesquisa" id="resultados-pesquisa"></div>
+        </div>
+        <nav class="menu-usuario">
+          <a href="chat.html" title="Chat"><i class="fas fa-comments"></i></a>
+          <a href="#" id="link-meu-perfil"
+            ><img src="" alt="Foto do Perfil" class="foto-perfil"
+          /></a>
+          <a href="#" id="botao-logout" title="Sair"
+            ><i class="fas fa-sign-out-alt"></i
+          ></a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container-feed container-perfil-page">
+      <div class="coluna-central" id="container-perfil">
+        <div class="cartao">
+          <div
+            id="cabecalho-perfil-usuario"
+            class="cartao-conteudo-perfil"
+            style="text-align: center; padding: 30px"
+          >
+            <p class="texto-secundario">Carregando perfil...</p>
+          </div>
+        </div>
+        <div class="cartao">
+          <div class="cartao-conteudo-portifolio">
+            <h2 class="texto-titulo-portifolio">Portfólio de Projetos</h2>
+            <div id="lista-projetos-perfil" style="margin-top: 20px"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <dialog id="modalComentario">
+      <form id="formComentario" name="formComentario">
+        <h4>Sua Avaliação</h4>
+        <p>
+          Você selecionou <strong id="notaModal"></strong> estrelas. Deixe um
+          comentário (opcional).
+        </p>
+        <textarea
+          id="textoComentario"
+          placeholder="Este projeto é inovador porque..."
+          rows="4"
+        ></textarea>
+        <div class="acoes-modal">
+          <button type="button" id="botaoCancelarModal">Cancelar</button>
+          <button type="submit" id="botaoEnviarAvaliacao">
+            Enviar Avaliação
+          </button>
+        </div>
+      </form>
+    </dialog>
+
+    <script src="js/scripts.js"></script>
+  </body>
+</html>

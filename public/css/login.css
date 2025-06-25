@@ -1,0 +1,193 @@
+body.pagina-login {
+  background: linear-gradient(
+    125deg,
+    #b0daff,
+    #a1c8eb,
+    #92c2ec,
+    #7eb4e4,
+    #5e9cd3,
+    #4588c2,
+    #3370a6
+  );
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+}
+
+@keyframes slideAndFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.logo-login {
+  text-align: center;
+  margin-bottom: 30px;
+  animation: fadeIn 0.8s ease-in-out forwards;
+  opacity: 0;
+}
+
+.logo-login img {
+  height: 45px;
+  opacity: 0.9;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.15));
+}
+
+.caixa-login {
+  width: 100%;
+  max-width: 400px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  animation: slideAndFadeIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation-delay: 0.2s;
+  opacity: 0;
+}
+
+.abas-login {
+  display: flex;
+}
+
+.aba {
+  flex: 1;
+  padding: 18px;
+  text-align: center;
+  cursor: pointer;
+  color: var(--texto-secundario);
+  transition: all 0.4s ease;
+  font-weight: 700;
+  border-bottom: 3px solid transparent;
+  position: relative;
+}
+
+.aba:hover {
+  background-color: var(--cor-fundo-secundario);
+  color: #275c93;
+}
+
+.aba.ativa {
+  color: var(--cor-primaria);
+  border-bottom-color: var(--cor-primaria);
+}
+
+.formulario-login {
+  padding: 30px;
+  display: none;
+}
+
+@keyframes formFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.formulario-login.visivel {
+  display: block;
+  animation: formFadeIn 0.5s ease-in-out;
+}
+
+.formulario-login h1 {
+  color: #333;
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.campo-form {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.campo-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--texto-secundario);
+}
+
+.campo-form input {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: var(--cor-fundo-secundario);
+  color: var(--texto-principal);
+  transition: var(--animacao-padrao);
+}
+
+.campo-form input:focus {
+  outline: none;
+  border-color: var(--cor-primaria);
+  box-shadow: 0 0 0 4px rgba(51, 112, 166, 0.1);
+  background-color: #fff;
+}
+
+.sua-universidade {
+  margin-top: 20px;
+}
+
+.link-cadastro {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  color: var(--texto-secundario);
+  text-decoration: none;
+  transition: var(--animacao-padrao);
+}
+
+.link-cadastro:hover {
+  text-decoration: underline;
+  color: var(--cor-primaria);
+}
+
+.texto-secundario {
+  color: #525252;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.formulario-login.visivel .campo-form {
+  animation: slideUpIn 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+.formulario-login.visivel .campo-form:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.formulario-login.visivel .campo-form:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.formulario-login.visivel .campo-form:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.formulario-login.visivel .campo-form:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.formulario-login.visivel .campo-form:nth-child(5) {
+  animation-delay: 0.5s;
+}
+.formulario-login.visivel .campo-form:nth-child(6) {
+  animation-delay: 0.6s;
+}

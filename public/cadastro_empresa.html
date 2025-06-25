@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro de Empresa - Hubies</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/login.css" />
+    <link rel="icon" href="/imagens/logo.png" type="image/png" />
+  </head>
+  <body class="pagina-login">
+    <div class="container-login" style="height: auto; padding: 50px 20px">
+      <div class="caixa-login">
+        <form
+          id="form-cadastro-empresa"
+          name="form-cadastro-empresa"
+          class="formulario-login visivel"
+        >
+          <h1>Crie uma Conta Empresarial</h1>
+          <p class="texto-secundario">
+            Encontre os melhores talentos universitários.
+          </p>
+
+          <div class="campo-form">
+            <label for="nome_empresa">Nome da Empresa</label>
+            <input type="text" id="nome_empresa" name="nome_empresa" required />
+          </div>
+
+          <div class="campo-form">
+            <label for="email_corporativo">Email Corporativo</label>
+            <input
+              type="email"
+              id="email_corporativo"
+              name="email_corporativo"
+              placeholder="contato@suaempresa.com"
+              required
+            />
+          </div>
+
+          <div class="campo-form">
+            <label for="logoEmpresa">Logo da Empresa (opcional)</label>
+            <input
+              type="file"
+              id="logoEmpresa"
+              name="logoEmpresa"
+              accept="image/*"
+            />
+          </div>
+
+          <div class="campo-form">
+            <label for="ramo">Ramo de Atuação</label>
+            <input
+              type="text"
+              id="ramo"
+              name="ramo"
+              placeholder="Ex: Tecnologia e Software"
+              required
+            />
+          </div>
+
+          <div class="campo-form">
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" name="senha" required />
+          </div>
+
+          <div class="campo-form">
+            <label for="cadastro-senha-confirma">Confirme sua Senha</label>
+            <input
+              type="password"
+              id="cadastro-senha-confirma"
+              name="senha_confirma"
+              required
+            />
+          </div>
+
+          <button type="submit" class="botao-login">Cadastrar Empresa</button>
+          <a href="login.html" class="link-cadastro"
+            >Já tem uma conta? Faça o login</a
+          >
+        </form>
+      </div>
+    </div>
+    <script src="js/scripts.js"></script>
+  </body>
+</html>

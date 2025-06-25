@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat - Hubies</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/chat.css" />
+    <link rel="icon" href="/imagens/logo.png" type="image/png" />
+  </head>
+  <body>
+    <header class="cabecalho-principal">
+      <div class="container">
+        <a href="feed.html" class="logo"
+          ><img src="/imagens/Letreiro.png" alt="Logo Hubies"
+        /></a>
+        <div class="caixa-busca-container">
+          <div class="caixa-busca">
+            <i class="fas fa-search"></i>
+            <input
+              type="search"
+              id="barra-pesquisa-input"
+              placeholder="Buscar alunos por nome..."
+              autocomplete="off"
+            />
+          </div>
+          <div class="caixa-resultados-pesquisa" id="resultados-pesquisa"></div>
+        </div>
+        <nav class="menu-usuario">
+          <a href="chat.html" title="Chat"><i class="fas fa-comments"></i></a>
+          <a href="#" id="link-meu-perfil"
+            ><img src="" alt="Foto do Perfil" class="foto-perfil"
+          /></a>
+          <a href="#" id="botao-logout" title="Sair"
+            ><i class="fas fa-sign-out-alt"></i
+          ></a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container-chat">
+      <aside class="coluna-conversas">
+        <div class="header-conversas">
+          <h2>Conversas</h2>
+        </div>
+        <div id="lista-de-conversas">
+          <p class="texto-secundario" style="padding: 15px">Carregando...</p>
+        </div>
+      </aside>
+
+      <section class="coluna-mensagens">
+        <div id="chat-placeholder">
+          <i class="fas fa-comments"></i>
+          <p>Selecione uma conversa para começar</p>
+        </div>
+        <div id="chat-ativo" style="display: none">
+          <div class="header-mensagens">
+            <img src="" alt="Foto" id="chat-ativo-foto" />
+            <h3 id="chat-ativo-nome"></h3>
+          </div>
+          <div class="corpo-mensagens" id="corpo-mensagens"></div>
+          <form class="form-enviar-mensagem" id="form-enviar-mensagem">
+            <input
+              type="text"
+              id="input-mensagem"
+              placeholder="Digite sua mensagem..."
+              autocomplete="off"
+              required
+            />
+            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <script src="js/scripts.js"></script>
+  </body>
+</html>
