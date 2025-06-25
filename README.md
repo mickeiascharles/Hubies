@@ -1,11 +1,16 @@
 <div> 
   <img height="200cm" src="/public/imagens/Letreiro.png"/>
 </div>
-Projeto para o HackaCriativa
+
 <div>   
   <a href="https://hubies.onrender.com">
     Hospedagem
-</div>
+  </div>
+Projeto para o HackaCriativa
+<br>
+    
+## Resumo do projeto
+    
 Hubies é uma plataforma de rede social e portfólio profissional projetada para ser a ponte entre o talento universitário e o mercado de trabalho. A aplicação funciona como um "hub" onde estudantes podem exibir seus projetos acadêmicos e pessoais, enquanto empresas podem descobrir e se conectar com novos talentos de forma direcionada e interativa.
 
 1. Públicos-Alvo
