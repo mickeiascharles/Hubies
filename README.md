@@ -71,6 +71,51 @@ Tecnologias envolvidas:
   <img height="35cm" src="https://download.logo.wine/logo/SQLite/SQLite-Logo.wine.png"/>
   <img height="35cm" src="https://s3.amazonaws.com/appforest_uf/f1614743655848x138438508074741460/brasilapi-logo-small.png"/>
 </div>
+<br> <br>
+
+## Como fazer para rodar no seu sistema: 
+1. Pré-requisitos
+Antes de começar, você precisa ter duas ferramentas essenciais instaladas em sua máquina:
+
+Node.js: É o ambiente que executa o nosso servidor JavaScript. Para verificar se você já o tem, abra seu terminal (Prompt de Comando, PowerShell ou Terminal) e digite node -v. Se um número de versão aparecer, ótimo! Se não, baixe e instale a versão LTS a partir do site oficial do Node.js.
+
+Git: É o sistema de controle de versão que usaremos para baixar os arquivos do repositório. Para verificar se o tem, digite git --version. Se não o tiver, baixe-o em git-scm.com.
+
+2. Clonando o Repositório
+Primeiro, escolha uma pasta em seu computador onde você deseja salvar o projeto. Abra o terminal nessa pasta e execute o seguinte comando para baixar (clonar) todos os arquivos do repositório:
+
+git clone https://github.com/mickeiascharles/Hubies.git
+
+Após o download, navegue para dentro da pasta do projeto com o comando:
+
+cd Hubies
+
+3. Instalando as Dependências
+Com o projeto baixado, precisamos instalar todos os pacotes e bibliotecas que o servidor (backend) precisa para funcionar (como Express, SQLite, etc.). No terminal, dentro da pasta do projeto, execute o seguinte comando:
+
+npm install
+
+Este comando lerá o arquivo package.json e baixará todas as dependências necessárias para a pasta node_modules.
+
+4. Iniciando o Servidor
+Agora que tudo está configurado, é hora de ligar o servidor! Execute o seguinte comando no terminal:
+
+node servidor.js
+
+Se tudo der certo, você verá uma mensagem de confirmação no terminal, parecida com esta:
+
+Conectado ao banco de dados SQLite em: C:\...\Hubies-main\data\hubies.db
+Servidor do Hubies rodando em http://localhost:3000
+
+Importante: Mantenha esta janela do terminal aberta! Se você a fechar, o servidor será desligado.
+
+5. Acessando a Aplicação
+Parabéns! Seu servidor está no ar. Agora, abra o seu navegador de internet (Chrome, Firefox, etc.) e acesse o seguinte endereço:
+
+http://localhost:3000
+
+Você será redirecionado para a página de login e poderá usar a aplicação Hubies em sua máquina local.
+<br><br>
 
 <div>
 Equipe:
