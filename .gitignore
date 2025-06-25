@@ -1,5 +1,17 @@
-# Dependencies
-/node_modules
+# Dependências do Node.js
+node_modules
 
-# Database file
+# Arquivos de Log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Arquivos de Banco de Dados
 *.db
+*.db-journal
+
+# Pasta de uploads de imagens
+public/uploads
+
+# Arquivos de ambiente (se você usar no futuro)
+.env
