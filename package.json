@@ -1,0 +1,27 @@
+{
+  "name": "hubies",
+  "version": "1.0.0",
+  "description": "Plataforma de portfólios para universitários.",
+  "main": "servidor.js",
+  "scripts": {
+    "start": "node servidor.js",
+    "test": "jest --forceExit"
+  },
+  "engines": {
+    "node": "18.x"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.10.0",
+    "bcrypt": "^6.0.0",
+    "express": "^4.19.2",
+    "multer": "^1.4.5-lts.1",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "jest": "^30.0.2",
+    "supertest": "^7.1.1"
+  }
+}
