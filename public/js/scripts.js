@@ -1,6 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const backendUrl = "https://hubies.onrender.com";
-
   const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
   const currentPage = window.location.pathname.split("/").pop() || "login.html";
 
@@ -65,9 +63,8 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
       try {
-        // --- ALTERAÇÃO 2: USAR A URL DO BACKEND ---
         const res = await fetch(
-          `${backendUrl}/api/pesquisa/alunos?termo=${encodeURIComponent(termo)}`
+          `/api/pesquisa/alunos?termo=${encodeURIComponent(termo)}`
         );
         const alunos = await res.json();
         searchResultsContainer.innerHTML = "";
@@ -124,7 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const handleLogin = async (endpoint, form) => {
       const data = Object.fromEntries(new FormData(form).entries());
       try {
-        const res = await fetch(`${backendUrl}${endpoint}`, {
+        const res = await fetch(endpoint, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data),
@@ -163,7 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (form.senha.value !== form.senha_confirma.value)
         return alert("As senhas não coincidem.");
       try {
-        const res = await fetch(`${backendUrl}${endpoint}`, {
+        const res = await fetch(endpoint, {
           method: "POST",
           body: new FormData(form),
         });
@@ -207,7 +204,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     const carregarProjetos = async () => {
       try {
-        const res = await fetch(`${backendUrl}/api/projetos`);
+        const res = await fetch("/api/projetos");
         if (!res.ok) throw new Error("Não foi possível carregar os projetos.");
         const projetos = await res.json();
         document
@@ -225,7 +222,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!container) return;
       try {
         const res = await fetch(
-          `${backendUrl}/api/chat/conversas?usuarioId=${usuarioLogado.id}&tipo=${usuarioLogado.tipo}`
+          `/api/chat/conversas?usuarioId=${usuarioLogado.id}&tipo=${usuarioLogado.tipo}`
         );
         const conversas = await res.json();
         container.innerHTML = "";
@@ -262,7 +259,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (inputImagem.files[0])
       formData.append("imagemProjeto", inputImagem.files[0]);
     try {
-      const res = await fetch(`${backendUrl}/api/projetos`, {
+      const res = await fetch("/api/projetos", {
         method: "POST",
         body: formData,
       });
@@ -285,7 +282,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .forEach((el) => el.remove());
       try {
         const res = await fetch(
-          `${backendUrl}/api/ranking?curso=${encodeURIComponent(curso)}`
+          `/api/ranking?curso=${encodeURIComponent(curso)}`
         );
         const projetos = await res.json();
         if (projetos.length === 0)
@@ -317,16 +314,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     const carregarPerfil = async () => {
       try {
-        const res = await fetch(`${backendUrl}/api/alunos/${alunoId}`);
+        const res = await fetch(`/api/alunos/${alunoId}`);
         if (!res.ok) throw new Error("Usuário não encontrado");
         const { aluno, projetos } = await res.json();
         document.title = `Perfil de ${aluno.nome} - Hubies`;
         let botaoChat = "";
-        
+
         if (usuarioLogado.tipo === "empresa") {
           botaoChat = `<button class="botao-login" id="botao-iniciar-conversa" data-aluno-id="${aluno.id}" style="margin-top: 20px;">Iniciar Conversa</button>`;
         }
-        
+
         const infoLocal =
           aluno.cidade && aluno.uf
             ? `<p class="texto-secundario" style="font-size: 1rem; margin-top: 5px;"><i class="fas fa-map-marker-alt"></i> ${aluno.cidade} - ${aluno.uf}</p>`
@@ -341,7 +338,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }</h1><p class="texto-secundario" style="font-size: 1.2rem;">${
           aluno.curso
         } - ${aluno.universidade}</p>${infoLocal}${botaoChat}`;
-        
+
         const listaProjetosDiv = document.getElementById(
           "lista-projetos-perfil"
         );
@@ -372,7 +369,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const carregarConversas = async () => {
       try {
         const res = await fetch(
-          `${backendUrl}/api/chat/conversas?usuarioId=${usuarioLogado.id}&tipo=${usuarioLogado.tipo}`
+          `/api/chat/conversas?usuarioId=${usuarioLogado.id}&tipo=${usuarioLogado.tipo}`
         );
         const conversas = await res.json();
         listaConversasDiv.innerHTML = "";
@@ -414,12 +411,15 @@ document.addEventListener("DOMContentLoaded", () => {
       corpoMensagensDiv.innerHTML =
         '<p class="texto-secundario">Carregando...</p>';
       try {
-        const res = await fetch(`${backendUrl}/api/chat/conversas/${conversaId}`);
+        const res = await fetch(`/api/chat/conversas/${conversaId}`);
         const mensagens = await res.json();
         corpoMensagensDiv.innerHTML = "";
         mensagens.forEach((m) => {
           const classe =
-            m.remetente_id == usuarioLogado.id && m.remetente_tipo == usuarioLogado.tipo ? "enviada" : "recebida";
+            m.remetente_id == usuarioLogado.id &&
+            m.remetente_tipo == usuarioLogado.tipo
+              ? "enviada"
+              : "recebida";
           corpoMensagensDiv.innerHTML += `<div class="bolha-mensagem ${classe}">${m.corpo_mensagem}</div>`;
         });
         corpoMensagensDiv.scrollTop = corpoMensagensDiv.scrollHeight;
@@ -443,7 +443,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       try {
         const res = await fetch(
-          `${backendUrl}/api/chat/conversas/${conversaAtivaId}/mensagem`,
+          `/api/chat/conversas/${conversaAtivaId}/mensagem`,
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -477,7 +477,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!usuarioLogado)
           return alert("Você precisa estar logado para avaliar.");
         if (usuarioLogado.tipo !== "empresa") {
-             return alert("Apenas empresas podem avaliar projetos.");
+          return alert("Apenas empresas podem avaliar projetos.");
         }
         projetoIdAtual = estrela.closest(".rating-estrelas").dataset.projetoId;
         notaAtual = estrela.dataset.valor;
@@ -506,7 +506,7 @@ document.addEventListener("DOMContentLoaded", () => {
               '<p class="texto-secundario">Carregando...</p>';
             try {
               const res = await fetch(
-                `${backendUrl}/api/projetos/${cartaoPost.dataset.id}/comentarios`
+                `/api/projetos/${cartaoPost.dataset.id}/comentarios`
               );
               const comentarios = await res.json();
               areaComentarios.innerHTML = "";
@@ -531,7 +531,7 @@ document.addEventListener("DOMContentLoaded", () => {
       } else if (botaoIniciarConversa) {
         if (!usuarioLogado || usuarioLogado.tipo !== "empresa") return;
         try {
-          const res = await fetch(`${backendUrl}/api/chat/iniciar`, {
+          const res = await fetch("/api/chat/iniciar", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -555,7 +555,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .addEventListener("submit", async (e) => {
         e.preventDefault();
         try {
-          const res = await fetch(`${backendUrl}/api/projetos/${projetoIdAtual}/avaliar`, {
+          const res = await fetch(`/api/projetos/${projetoIdAtual}/avaliar`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -605,7 +605,7 @@ function criarElementoPostagem(projeto, ranking = null) {
                 <p>${projeto.texto}</p>
                 ${
                   projeto.imagem_path
-                    ? `<img src="${backendUrl}${projeto.imagem_path}" alt="Imagem do Projeto" class="imagem-post">`
+                    ? `<img src="${projeto.imagem_path}" alt="Imagem do Projeto" class="imagem-post">`
                     : ""
                 }
             </div>
